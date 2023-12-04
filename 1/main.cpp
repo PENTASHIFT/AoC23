@@ -110,7 +110,6 @@ unsigned int solve()
             }
         }
 
-        std::cout << line << std::endl << num << std::endl << std::endl;
         sum += num;
     }
 
