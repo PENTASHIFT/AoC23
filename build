@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+    echo "Must specify which day to build!"
+    exit 1
+fi
+
+SRC=$1/main.cpp
+BIN="bin/$1"
+DAT="data/$1"
+
+if [ $# -lt 2 ]; then
+    echo "Must specify which part to build!"
+    exit 1
+fi
+
+if [ $2 -eq 1 ]; then
+    PART=PART_ONE
+elif [ $2 -eq 2 ]; then
+    PART=PART_TWO
+else
+    echo "Invalid part specified!"
+    exit 1
+fi
+
+g++ $SRC -D $PART -Wall -pedantic-errors -Werror -ggdb --std=c++2a -o $BIN
+
+if [ $? -eq 0 ]; then
+    cat $DAT | $BIN
+fi
+
