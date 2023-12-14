@@ -23,7 +23,7 @@ else
     exit 1
 fi
 
-g++ $SRC -D $PART -Wall -pedantic-errors -Werror -ggdb --std=c++2a -o $BIN
+g++ $SRC -D $PART -I include -Wall -pedantic-errors -Werror -ggdb --std=c++2a -o $BIN
 
 if [ $? -eq 0 ]; then
     cat $DAT | $BIN
